@@ -131,7 +131,7 @@ vpc_id      = var.vpc_id
 resource "aws_route53_record" "roboshop" {
     zone_id = data.aws_route53_zone.mine.zone_id
     name    = local.dns_name
-    type    = "A"
+    type    = "CNAME"
     ttl     = 30
     records = [var.alb_dns_name]
 }
@@ -147,7 +147,7 @@ resource "aws_lb_listener_rule" "listener-rule" {
 
   condition {
     host_header {
-        values=local.dns_name
+        values=[local.dns_name]
     }
   }
 }
