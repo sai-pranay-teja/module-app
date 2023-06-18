@@ -10,9 +10,9 @@ resource "aws_launch_template" "template-main" {
 
   vpc_security_group_ids = [aws_security_group.app-traffic.id]
  
-    user_data = base64encode(templatefile("${path.module}/userdata.sh" , {
+    /* user_data = base64encode(templatefile("${path.module}/userdata.sh" , {
     component=var.component
-}))
+})) */
 
   instance_market_options {
     market_type = "spot"
@@ -52,8 +52,8 @@ resource "aws_autoscaling_group" "asg-main" {
 }
 
 resource "aws_autoscaling_policy" "asg-policy" {
-  autoscaling_group_name = "CPULoadMonitor"
-  name                   = aws_autoscaling_group.asg-main.name
+  autoscaling_group_name = aws_autoscaling_group.asg-main.name
+  name                   = "CPULoadMonitor"
   policy_type            = "TargetTrackingScaling"
   target_tracking_configuration {
     target_value = 20.0
