@@ -9,3 +9,5 @@ variable "vpc_id"{}
 variable "alb_dns_name"{}
 variable "listener_arn"{}
 variable "parameters" {}
+variable "default_vpc_id"{}
+variable "domain_name"{}
