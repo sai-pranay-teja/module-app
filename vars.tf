@@ -14,3 +14,4 @@ variable "domain_name"{}
 variable "max_size" {}
 variable "min_size"{}
 variable "desired_capacity"{}
+variable "public_subnets"{}

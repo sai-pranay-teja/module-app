@@ -87,6 +87,14 @@ resource "aws_security_group" "app-traffic" {
     cidr_blocks      = [data.aws_vpc.default.cidr_block]
   }
 
+  ingress {
+    description      = "Traffic from Public subnets internal"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = var.public_subnets
+  }
+
     ingress {
     description      = "Prometheus Traffic"
     from_port        = 9100
