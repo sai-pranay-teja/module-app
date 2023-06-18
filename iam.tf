@@ -1,18 +1,18 @@
 resource "aws_iam_instance_profile" "Full-access-profile" {
-  name = "${var.env}-profile-app"
+  name = "${var.component}-${var.env}-profile-app"
   role = aws_iam_role.full-access-role.name
 }
 
 
 resource "aws_iam_policy_attachment" "full-access-attachment" {
-  name       = "${var.env}-attachment-app"
+  name       = "${var.component}-${var.env}-attachment-app"
   roles      = [aws_iam_role.full-access-role.name]
   policy_arn = aws_iam_policy.full-access-policy.arn
 }
 
 
 resource "aws_iam_role" "full-access-role" {
-  name = "${var.env}-role-app"
+  name = "${var.component}-${var.env}-role-app"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -29,7 +29,7 @@ resource "aws_iam_role" "full-access-role" {
 }
 
 resource "aws_iam_policy" "full-access-policy" {
-  name        = "${var.env}-policy-app"
+  name        = "${var.component}-${var.env}-policy-app"
   path = "/"
   policy = jsonencode({
     
