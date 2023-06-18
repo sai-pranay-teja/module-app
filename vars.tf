@@ -11,3 +11,6 @@ variable "listener_arn"{}
 variable "parameters" {}
 variable "default_vpc_id"{}
 variable "domain_name"{}
+variable "max_size" {}
+variable "min_size"{}
+variable "desired_capacity"{}
