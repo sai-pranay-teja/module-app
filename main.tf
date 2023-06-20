@@ -39,6 +39,7 @@ resource "aws_autoscaling_group" "asg-main" {
   desired_capacity          = var.desired_capacity
 
   vpc_zone_identifier       = var.subnet_ids
+  target_group_arns = [aws_lb_target_group.tg-main.arn]
   launch_template {
     id      = aws_launch_template.template-main.id
     version = "$Latest"
