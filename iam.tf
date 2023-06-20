@@ -44,7 +44,7 @@ resource "aws_iam_policy" "full-access-policy" {
                 "ssm:GetParameters",
                 "ssm:GetParameter"
             ],
-            Resource: [for i in local.parameters : "arn:aws:ssm:us-east-1:${data.aws_caller_identity.current.account_id}:parameter/${env}.${i}.*"]
+            Resource: [for i in local.parameters : "arn:aws:ssm:us-east-1:${data.aws_caller_identity.current.account_id}:parameter/${var.env}.${i}.*"]
         },
         {
             "Sid": "VisualEditor1",
