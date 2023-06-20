@@ -57,11 +57,12 @@ resource "aws_autoscaling_policy" "asg-policy" {
   name                   = "CPULoadMonitor"
   policy_type            = "TargetTrackingScaling"
   target_tracking_configuration {
-    target_value = 20.0
+    
     predefined_metric_specification {
         predefined_metric_type = "ASGAverageCPUUtilization"
 
     }
+    target_value = 20.0
   }
 }
 
