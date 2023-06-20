@@ -32,6 +32,7 @@ resource "aws_launch_template" "template-main" {
 
 
 resource "aws_autoscaling_group" "asg-main" {
+  depends_on = [ aws_lb_target_group.tg-main ]
   name                      = "${var.env}-${var.component}-roboshop"
   max_size                  = var.max_size
   min_size                  = var.min_size
